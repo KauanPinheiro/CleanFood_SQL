@@ -48,11 +48,18 @@ primary key(codReceita),
 foreign key(codUsuario)references tbusuario(codUsuario)
 );
 create table tbpasso(
-codPasso int,
-codReceita int,
-modeDePreparo varchar(500),
-descricao varchar(500)
+codPasso int not null auto_increment,
+modeDePreparo varchar(500) not null,
+descricao varchar(500),
+codReceita int not null,
+primary key(codPasso),
+foreign key(codReceita)references tbreceitas(codReceita)
 ); 
+create table tbtppreparo(
+codTempoDePreparo int not null,
+codReceita int not null,
+codPasso int not null,
+tempo time not null,
 create table tbingredientes(
 codIngrediente int not null auto_increment,
 nomeIngrediente varchar(100) not null,
@@ -88,6 +95,17 @@ primary key(codQuantidade),
 foreign key(codMedida)references tbmedida(codMedida)
 );
 
+show tables;
+
+select * from tbreceitas;
+select * from tbpasso;
+select * from tbtppreparo;
+select * from tbingredientes;
+select * from tbavaliacao;
+select * from tbcliente;
+select * from tbingredientesreceitas;
+select * from tbmedida;
+select * from tbquantidade;
 
 
 
